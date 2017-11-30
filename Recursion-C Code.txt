@@ -1,0 +1,18 @@
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     struct TreeNode *left;
+ *     struct TreeNode *right;
+ * };
+ */
+bool isSameTree(struct TreeNode* p, struct TreeNode* q) {
+    if(!p && !q)    return 1;
+    if(!p || !q)     return 0;
+    int f1 = 0, f2 = 0;
+    if(p->val == q->val){
+        f1 = isSameTree(p->left, q->left);
+        f2 = isSameTree(p->right, q->right);
+    }
+    return f1 && f2;
+}
